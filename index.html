@@ -44,7 +44,7 @@
 
 <div id="traderScreen" class="app hidden">
 <header class="header"><div class="logo">FOREX<span>•</span>ACCOUNT</div><div class="headerActions"><div class="demo">FOREX TRADE</div><button class="accountBtn" onclick="showAccountPage()">ACCOUNT</button><button class="logoutBtn" onclick="logout()">LOG OUT</button></div></header>
-<section class="account"><div class="accountBox"><small>BALANCE</small><strong id="balance">$78.00</strong></div><div class="accountBox"><small>EQUITY</small><strong id="equity">$78.00</strong></div><div class="accountBox"><small>MARGIN</small><strong id="margin">$0.00</strong></div><div class="accountBox"><small>FREE MARGIN</small><strong id="freeMargin">$78.00</strong></div></section>
+<section class="account"><div class="accountBox"><small>BALANCE</small><strong id="balance">$70.00</strong></div><div class="accountBox"><small>EQUITY</small><strong id="equity">$78.00</strong></div><div class="accountBox"><small>MARGIN</small><strong id="margin">$0.00</strong></div><div class="accountBox"><small>FREE MARGIN</small><strong id="freeMargin">$78.00</strong></div></section>
 <section class="market" id="market"></section>
 <main class="main"><div class="left"><div class="chartHeader"><div><div class="chartPair" id="chartPair">EUR/USD</div><div style="font-size:10px;color:#718796">Forex Market</div></div><div class="chartPrice" id="chartPrice">1.10000</div></div><div class="timeframes"><button>1m</button><button class="active">5m</button><button>15m</button><button>1H</button><button>4H</button><button>1D</button></div><div class="chart"><canvas id="chart"></canvas></div><div class="order"><div class="orderGrid"><div class="field"><label>PAIR</label><select id="orderPair"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option></select></div><div class="field"><label>LOT SIZE</label><input id="lots" type="number" value="0.10" min="0.01" step="0.01"></div></div><div class="tradeButtons"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div></div></div>
 <aside class="right"><div class="chatTitle">Trading Assistant</div><div class="chat" id="chat"><div class="msg bot"><small>FOREX BOT</small>Welcome to your forex account.<br><br>You can type commands such as:<br><br><b>Buy EUR/USD 0.10 lot</b><br><b>Sell GBP/USD 0.20 lot</b><br><b>Show my balance</b><br><b>Show open trades</b><br><b>Close all trades</b></div></div><div class="chatInput"><input id="message" placeholder="Type a trading command..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">➤</button></div><div class="positions"><div class="positionsTitle">OPEN POSITIONS</div><div id="positions"><div class="empty">No open positions</div></div></div></aside></main>
@@ -63,12 +63,33 @@
 /* ================= AUTH + PERSISTENT FOREIGN ACCOUNTS ================= */
 const USERS_KEY='forex_real_users_v3';
 const SESSION_KEY='forex_real_session_v3';
+  const GLOBAL_BALANCE = 00;
+const GLOBAL_BALANCE_KEY = 'forex_global_balance_v1';
 let currentUserId=null;
 let pendingRegistration=null;
 let demoOtp=null;
 
 function loadUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch(e){return {}}}
 function saveUsers(users){localStorage.setItem(USERS_KEY,JSON.stringify(users))}
+  function syncGlobalBalance(){
+  const previous=Number(localStorage.getItem(GLOBAL_BALANCE_KEY));
+
+  if(previous===GLOBAL_BALANCE)return;
+
+  const users=loadUsers();
+
+  Object.keys(users).forEach(key=>{
+    users[key].balance=GLOBAL_BALANCE;
+  });
+
+  saveUsers(users);
+  localStorage.setItem(GLOBAL_BALANCE_KEY,String(GLOBAL_BALANCE));
+
+  if(currentUserId && users[currentUserId]){
+    balance=GLOBAL_BALANCE;
+    updateAccount();
+  }
+  }
 function currentUser(){const users=loadUsers();return currentUserId&&users[currentUserId]?users[currentUserId]:null}
 function normalizeIdentity(v){return v.trim().toLowerCase()}
 function userKey(identity){return btoa(unescape(encodeURIComponent(normalizeIdentity(identity)))).replace(/=/g,'')}
@@ -105,8 +126,25 @@ function login(){
 }
 function logout(){saveCurrentUser();currentUserId=null;localStorage.removeItem(SESSION_KEY);document.getElementById('traderScreen').classList.add('hidden');document.getElementById('accountScreen').classList.add('hidden');document.getElementById('authScreen').classList.remove('hidden');showAuth('login');}
 function saveCurrentUser(){if(!currentUserId)return;const users=loadUsers(),u=users[currentUserId];if(!u)return;u.balance=balance;u.positions=positions;u.history=tradeHistory;u.wallet=wallet;users[currentUserId]=u;saveUsers(users)}
-function loadCurrentUser(){const u=currentUser();if(!u)return false;balance=Number(u.balance??10000);positions=Array.isArray(u.positions)?u.positions:[];tradeHistory=Array.isArray(u.history)?u.history:[];wallet=u.wallet||{PLN:0,USD:0,EUR:0};return true}
-function boot(){const session=localStorage.getItem(SESSION_KEY);if(session){currentUserId=session;if(loadCurrentUser()){showTrader();return}localStorage.removeItem(SESSION_KEY)}document.getElementById('authScreen').classList.remove('hidden')}
+function loadCurrentUser(){const u=currentUser();if(!u)return false;balance=Number(u.balance??GLOBAL_BALANCE);positions=Array.isArray(u.positions)?u.positions:[];tradeHistory=Array.isArray(u.history)?u.history:[];wallet=u.wallet||{PLN:0,USD:0,EUR:0};return true}
+function boot(){
+  syncGlobalBalance();
+
+  const session=localStorage.getItem(SESSION_KEY);
+
+  if(session){
+    currentUserId=session;
+
+    if(loadCurrentUser()){
+      showTrader();
+      return;
+    }
+
+    localStorage.removeItem(SESSION_KEY);
+  }
+
+  document.getElementById('authScreen').classList.remove('hidden');
+}
 function showTrader(){if(!loadCurrentUser())return;document.getElementById('authScreen').classList.add('hidden');document.getElementById('accountScreen').classList.add('hidden');document.getElementById('traderScreen').classList.remove('hidden');generateCandles();renderMarket();renderPositions();updateAccount();drawChart()}
 function showAccountPage(){saveCurrentUser();document.getElementById('traderScreen').classList.add('hidden');document.getElementById('accountScreen').classList.remove('hidden');renderAccountPage()}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),3000)}
@@ -115,7 +153,7 @@ function demoWithdraw(currency){showToast('Withdrawal request for '+currency+' w
 
 /* ================= TRADING ENGINE ================= */
 const marketData={'EUR/USD':{price:1.10000,decimals:5,pip:.0001},'GBP/USD':{price:1.27500,decimals:5,pip:.0001},'USD/JPY':{price:148.500,decimals:3,pip:.01},'AUD/USD':{price:.66000,decimals:5,pip:.0001}};
-let balance=78,positions=[],tradeHistory=[],wallet={PLN:0,USD:0,EUR:0},selectedPair='EUR/USD',candles=[];
+let balance=GLOBAL_BALANCE,positions=[],tradeHistory=[],wallet={PLN:0,USD:0,EUR:0},selectedPair='EUR/USD',candles=[];
 const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');let candleTimer=0;const CANDLE_DURATION=5000;
 function generateCandles(){candles=[];let p=marketData[selectedPair].price;for(let i=0;i<55;i++){const open=p,m=(Math.random()-.48)*marketData[selectedPair].pip*35,close=open+m,high=Math.max(open,close)+Math.random()*marketData[selectedPair].pip*15,low=Math.min(open,close)-Math.random()*marketData[selectedPair].pip*15;candles.push({open,close,high,low});p=close}}
 function drawChart(){const rect=canvas.getBoundingClientRect();if(!rect.width)return;canvas.width=rect.width*devicePixelRatio;canvas.height=rect.height*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);const w=rect.width,h=rect.height;ctx.clearRect(0,0,w,h);if(!candles.length)return;const max=Math.max(...candles.map(c=>c.high)),min=Math.min(...candles.map(c=>c.low)),range=max-min||1,y=p=>20+(max-p)/range*(h-40),spacing=w/candles.length;candles.forEach((c,i)=>{const x=i*spacing+spacing/2,bull=c.close>=c.open;ctx.strokeStyle=bull?'#20d79d':'#ff5264';ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(x,y(c.high));ctx.lineTo(x,y(c.low));ctx.stroke();const top=y(Math.max(c.open,c.close)),bottom=y(Math.min(c.open,c.close));ctx.fillRect(x-spacing*.30,top,spacing*.60,Math.max(2,bottom-top))});const price=marketData[selectedPair].price,py=y(price);ctx.strokeStyle='#607887';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(0,py);ctx.lineTo(w,py);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#dce8ee';ctx.font='11px Arial';ctx.fillText(price.toFixed(marketData[selectedPair].decimals),8,Math.max(15,py-6))}
@@ -123,7 +161,38 @@ function updatePrices(){Object.keys(marketData).forEach(pair=>{const d=marketDat
 function selectPair(pair){selectedPair=pair;document.getElementById('chartPair').textContent=pair;document.getElementById('orderPair').value=pair;candleTimer=0;generateCandles();renderMarket();drawChart()}
 function renderMarket(){const market=document.getElementById('market');market.innerHTML='';Object.keys(marketData).forEach(pair=>{const d=marketData[pair],div=document.createElement('div');div.className='pair '+(pair===selectedPair?'active':'');div.onclick=()=>selectPair(pair);div.innerHTML='<div class="pairName">'+pair+'</div><div class="price">'+d.price.toFixed(d.decimals)+'</div><div class="change">LIVE</div>';market.appendChild(div)});document.getElementById('chartPrice').textContent=marketData[selectedPair].price.toFixed(marketData[selectedPair].decimals)}
 function calculatePnL(pos){const current=marketData[pos.pair].price,difference=pos.type==='BUY'?current-pos.entry:pos.entry-current,pipValue=pos.pair==='USD/JPY'?1000:100000;return difference*pos.lots*pipValue}
-function placeTrade(type){const pair=document.getElementById('orderPair').value,lots=parseFloat(document.getElementById('lots').value);if(!lots||lots<=0)return addBot('Please enter a valid lot size.');const price=marketData[pair].price;positions.push({id:Date.now()+Math.random(),pair,type,lots,entry:price,time:new Date().toISOString()});addBot('<b>Order executed</b><br><br>'+type+' '+pair+'<br>Volume: '+lots.toFixed(2)+' lot<br>Entry: '+price.toFixed(marketData[pair].decimals)+'<br>Status: <span class="green">OPEN</span>');renderPositions();updateAccount();saveCurrentUser()}
+function placeTrade(type){
+  if(balance < 150){
+    addBot('<b>Trading unavailable</b><br><br>Your balance must be at least <b>$150.00</b> to open a trade.<br>Current balance: <span class="red">$'+balance.toFixed(2)+'</span>');
+    showToast('Minimum balance of $150 required to trade.');
+    return;
+  }
+
+  const pair=document.getElementById('orderPair').value,
+        lots=parseFloat(document.getElementById('lots').value);
+
+  if(!lots||lots<=0)return addBot('Please enter a valid lot size.');
+
+  const price=marketData[pair].price;
+
+  positions.push({
+    id:Date.now()+Math.random(),
+    pair,
+    type,
+    lots,
+    entry:price,
+    time:new Date().toISOString()
+  });
+
+  addBot('<b>Order executed</b><br><br>'+type+' '+pair+
+    '<br>Volume: '+lots.toFixed(2)+' lot<br>Entry: '+
+    price.toFixed(marketData[pair].decimals)+
+    '<br>Status: <span class="green">OPEN</span>');
+
+  renderPositions();
+  updateAccount();
+  saveCurrentUser();
+}
 function closePosition(id){const i=positions.findIndex(p=>p.id===id);if(i<0)return;const pos=positions[i],pnl=calculatePnL(pos),exit=marketData[pos.pair].price;balance+=pnl;tradeHistory.unshift({id:pos.id,pair:pos.pair,type:pos.type,lots:pos.lots,entry:pos.entry,exit,pnl,closedAt:new Date().toISOString()});positions.splice(i,1);addBot('<b>Position closed</b><br><br>'+pos.type+' '+pos.pair+'<br>Result: <span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span>');renderPositions();updateAccount();saveCurrentUser()}
 function renderPositions(){const box=document.getElementById('positions');if(!positions.length){box.innerHTML='<div class="empty">No open positions</div>';return}box.innerHTML='';positions.forEach(pos=>{const pnl=calculatePnL(pos),div=document.createElement('div');div.className='position';div.innerHTML='<div><b>'+pos.type+' '+pos.pair+'</b><br>'+pos.lots.toFixed(2)+' lot</div><div>'+pos.entry.toFixed(marketData[pos.pair].decimals)+'<br><span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span></div><button class="closeBtn" onclick="closePosition('+pos.id+')">CLOSE</button>';box.appendChild(div)})}
 function updatePositions(){if(!document.getElementById('positions'))return;renderPositions()}
@@ -139,7 +208,7 @@ function executeChatTrade(type,text){let pair=null;Object.keys(marketData).forEa
 function escapeHTML(text){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
 
 /* ================= ACCOUNT PAGE ================= */
-function renderAccountPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||300).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||78).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||69).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">No completed trades yet.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
+function renderAccountPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||00).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||00).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||00).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">No completed trades yet.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
 
 window.addEventListener('resize',drawChart);document.getElementById('orderPair').addEventListener('change',e=>selectPair(e.target.value));setInterval(updatePrices,1000);boot();
 </script>
