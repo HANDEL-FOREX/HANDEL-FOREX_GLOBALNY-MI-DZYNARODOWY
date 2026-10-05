@@ -10,6 +10,53 @@
 .authScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#102c3a 0,#071019 55%)}.authCard{width:min(430px,100%);background:#0b1722;border:1px solid #1c3a4b;border-radius:12px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.35)}.authLogo{text-align:center;font-size:24px;font-weight:bold;margin-bottom:7px}.authLogo span{color:#21d69b}.authSub{text-align:center;color:#8196a4;font-size:12px;margin-bottom:22px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;background:#071019;padding:4px;border-radius:7px;margin-bottom:18px}.tabs button{border:0;background:transparent;color:#8196a4;padding:10px;border-radius:5px;cursor:pointer}.tabs button.active{background:#173342;color:#fff}.authField{margin-bottom:12px}.authField label{display:block;color:#91a5b3;font-size:11px;margin-bottom:5px}.authField input{width:100%;padding:12px;background:#071019;color:#fff;border:1px solid #294657;border-radius:6px;outline:none}.primary{width:100%;padding:12px;border:0;border-radius:6px;background:#12b982;color:#fff;font-weight:bold;cursor:pointer;margin-top:4px}.secondary{width:100%;padding:11px;border:1px solid #294657;border-radius:6px;background:#0d202c;color:#fff;cursor:pointer;margin-top:9px}.authNote{font-size:10px;color:#6f8592;line-height:1.5;margin-top:14px;text-align:center}.error{background:#341720;border:1px solid #743443;color:#ff9aa4;padding:9px;border-radius:6px;font-size:11px;margin-bottom:12px}.success{background:#12352b;border:1px solid #22684f;color:#6ce9bc;padding:9px;border-radius:6px;font-size:11px;margin-bottom:12px}.otpBox{margin-top:12px;padding:12px;background:#0d202c;border:1px solid #214050;border-radius:7px}.demoCode{font-size:20px;letter-spacing:5px;text-align:center;color:#35e5aa;margin:7px 0}.smallBtn{border:0;background:#183b4b;color:#fff;padding:8px;border-radius:5px;cursor:pointer;font-size:11px;width:100%}
 /* ACCOUNT PAGE */
 .accountPage{padding:18px;flex:1}.pageTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.pageTitle h1{font-size:21px}.backBtn{border:1px solid #294858;background:#0e202d;color:#fff;padding:9px 13px;border-radius:5px;cursor:pointer}.profileCard{background:#0b1722;border:1px solid #1c3546;border-radius:9px;padding:18px;margin-bottom:12px}.profileLabel{color:#8196a4;font-size:10px;margin-bottom:5px}.profileValue{font-size:15px;word-break:break-all}.accountGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.currencyCard{background:#0b1722;border:1px solid #1c3546;border-radius:9px;padding:15px}.currencyCard small{color:#8196a4}.currencyCard strong{display:block;font-size:21px;margin-top:7px}.featureGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.feature{background:#0b1722;border:1px solid #1c3546;border-radius:9px;padding:16px;min-height:120px}.feature h3{font-size:14px;margin-bottom:8px}.feature p{font-size:11px;color:#8196a4;line-height:1.5}.upgradeBtn{margin-top:12px;border:0;background:#12b982;color:#fff;padding:10px 13px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:11px}.history{margin-top:12px;background:#0b1722;border:1px solid #1c3546;border-radius:9px;overflow:hidden}.history h3{padding:13px;font-size:14px;border-bottom:1px solid #1c3546}.historyRow{padding:11px 13px;border-bottom:1px solid #142c39;font-size:11px;display:grid;grid-template-columns:1fr 1fr 1fr 90px;gap:5px}.historyHead{color:#8196a4;font-size:10px}.withdraw{margin-top:12px}.withdraw button{margin-right:7px;margin-top:7px;border:1px solid #294858;background:#0e202d;color:#fff;padding:9px 13px;border-radius:5px;cursor:pointer}.toast{position:fixed;right:15px;bottom:15px;max-width:330px;background:#102532;border:1px solid #2a5568;color:#fff;padding:12px 14px;border-radius:7px;font-size:12px;z-index:99;box-shadow:0 10px 30px #0008}
+  .fundCard{
+  background:#0b1722;
+  border:1px solid #1c3546;
+  border-radius:9px;
+  padding:18px;
+  margin-bottom:12px;
+}
+
+.fundTitle{
+  font-size:16px;
+  font-weight:bold;
+  color:#fff;
+  margin-bottom:8px;
+}
+
+.fundText{
+  font-size:11px;
+  color:#8196a4;
+  line-height:1.5;
+  margin-bottom:12px;
+}
+
+.walletAddress{
+  background:#071019;
+  border:1px solid #294657;
+  border-radius:6px;
+  padding:12px;
+  font-size:11px;
+  color:#35e5aa;
+  word-break:break-all;
+  margin-bottom:9px;
+}
+
+.copyWalletBtn{
+  width:100%;
+  padding:11px;
+  border:0;
+  border-radius:6px;
+  background:#12b982;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.copyWalletBtn:hover{
+  background:#0fa873;
+}
 @media(max-width:800px){.account{grid-template-columns:repeat(2,1fr)}.main{grid-template-columns:1fr}.right{min-height:520px}.chart{height:320px}.accountGrid,.featureGrid{grid-template-columns:1fr}.header{flex-wrap:wrap}}
 </style>
 </head>
@@ -54,6 +101,21 @@
 <header class="header"><div class="logo">FOREX<span>•</span>ACCOUNT</div><div class="headerActions"><div class="demo">MY ACCOUNT</div><button class="logoutBtn" onclick="logout()">LOG OUT</button></div></header>
 <section class="accountPage"><div class="pageTitle"><h1>Account</h1><button class="backBtn" onclick="showTrader()">GO BACK TO HOMEPAGE</button></div>
 <div class="profileCard"><div class="profileLabel">EMAIL / PHONE USED TO OPEN ACCOUNT</div><div id="profileIdentity" class="profileValue">—</div></div>
+  <div class="fundCard">
+  <div class="fundTitle">FUND YOUR FOREX-ACCOUNT</div>
+  <div class="fundText">
+    This is your forex wallet address for depositing funds into your trading account.
+    You can use this address whenever you want to fund your FOREX-ACCOUNT.
+  </div>
+
+  <div class="walletAddress" id="forexWalletAddress">
+    0xc7F7FeA10C7766a80d8c5e03A65679297BC77e09
+  </div>
+
+  <button class="copyWalletBtn" onclick="copyForexWallet()">
+    COPY ADDRESS
+  </button>
+  </div>
 <div class="accountGrid"><div class="currencyCard"><small>WITHDRAWAL PLN</small><strong id="plnBalance">0.00 PLN</strong><div class="withdraw"><button onclick="demoWithdraw('PLN')">WITHDRAW PLN</button></div></div><div class="currencyCard"><small>WITHDRAWAL USD</small><strong id="usdBalance">0.00 USD</strong><div class="withdraw"><button onclick="demoWithdraw('USD')">WITHDRAW USD</button></div></div><div class="currencyCard"><small>WITHDRAWAL EUR</small><strong id="eurBalance">0.00 EUR</strong><div class="withdraw"><button onclick="demoWithdraw('EUR')">WITHDRAW EUR</button></div></div></div>
 <div class="featureGrid"><div class="feature"><h3>UPGRADE ACCOUNT</h3><p>Upgrade options connected to a real bank account later. This foreign remote only displays the feature.</p><button class="upgradeBtn" onclick="foreignUpgrade()">UPGRADE ACCOUNT</button></div><div class="feature"><h3>TRADING HISTORY</h3><p>See your completed BUY and SELL trades, including entry, exit and profit or loss.</p><button class="upgradeBtn" onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})">VIEW HISTORY</button></div></div>
 <div id="history" class="history"><h3>TRADING HISTORY</h3><div class="historyRow historyHead"><div>PAIR / TYPE</div><div>ENTRY → EXIT</div><div>RESULT</div><div>DATE</div></div><div id="historyRows"></div></div>
@@ -210,6 +272,15 @@ function escapeHTML(text){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;')
 /* ================= ACCOUNT PAGE ================= */
 function renderAccountPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||00).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||00).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||00).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">No completed trades yet.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
 
+  function copyForexWallet(){
+  const address=document.getElementById('forexWalletAddress').textContent.trim();
+
+  navigator.clipboard.writeText(address).then(()=>{
+    showToast('Forex wallet address copied.');
+  }).catch(()=>{
+    showToast('Unable to copy address.');
+  });
+  }
 window.addEventListener('resize',drawChart);document.getElementById('orderPair').addEventListener('change',e=>selectPair(e.target.value));setInterval(updatePrices,1000);boot();
 </script>
 </body
