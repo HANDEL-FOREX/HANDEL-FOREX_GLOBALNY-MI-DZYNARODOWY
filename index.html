@@ -115,7 +115,7 @@ function verifyRegistration(){
  if(!pendingRegistration)return authMsg('Start registration first.');
  if(document.getElementById('otpInput').value.trim()!==demoOtp)return authMsg('Incorrect verification code.');
  const id=pendingRegistration.identity,key=userKey(id),users=loadUsers();
- users[key]={id:key,identity:id,password:pendingRegistration.password,balance:78,positions:[],history:[],wallet:{PLN:0,USD:0,EUR:0},createdAt:new Date().toISOString()};
+ users[key]={id:key,identity:id,password:pendingRegistration.password,balance:GLOBAL_BALANCE,positions:[],history:[],wallet:{PLN:0,USD:0,EUR:0},createdAt:new Date().toISOString()};
  saveUsers(users);currentUserId=key;localStorage.setItem(SESSION_KEY,key);pendingRegistration=null;demoOtp=null;authMsg('Account created successfully.','success');
  setTimeout(showTrader,250);
 }
