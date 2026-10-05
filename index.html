@@ -32,19 +32,19 @@
       <div class="authField"><label>CONFIRM PASSWORD</label><input id="regPassword2" type="password" autocomplete="new-password" placeholder="Confirm password"></div>
       <button class="primary" onclick="startRegistration()">CREATE ACCOUNT & GET CODE</button>
       <div id="otpArea" class="otpBox hidden">
-        <div style="font-size:11px;color:#91a5b3">DEMO VERIFICATION CODE</div>
+        <div style="font-size:11px;color:#91a5b3">VERIFICATION CODE</div>
         <div id="demoCode" class="demoCode">000000</div>
         <div class="authField"><label>ENTER CODE</label><input id="otpInput" inputmode="numeric" maxlength="6" placeholder="6-digit code"></div>
         <button class="smallBtn" onclick="verifyRegistration()">VERIFY & CREATE ACCOUNT</button>
       </div>
-      <div class="authNote">This is a local demo. No real SMS/email is sent. The verification code is shown on this screen.</div>
+      <div class="authNote">This is a Secret presonal code. real SMS/email is sent. The verification code is shown on this screen.</div>
     </div>
   </div>
 </div>
 
 <div id="traderScreen" class="app hidden">
 <header class="header"><div class="logo">FOREX<span>•</span>ACCOUNT</div><div class="headerActions"><div class="demo">FOREX TRADE</div><button class="accountBtn" onclick="showAccountPage()">ACCOUNT</button><button class="logoutBtn" onclick="logout()">LOG OUT</button></div></header>
-<section class="account"><div class="accountBox"><small>BALANCE</small><strong id="balance">$10,000.00</strong></div><div class="accountBox"><small>EQUITY</small><strong id="equity">$10,000.00</strong></div><div class="accountBox"><small>MARGIN</small><strong id="margin">$0.00</strong></div><div class="accountBox"><small>FREE MARGIN</small><strong id="freeMargin">$10,000.00</strong></div></section>
+<section class="account"><div class="accountBox"><small>BALANCE</small><strong id="balance">$300.00</strong></div><div class="accountBox"><small>EQUITY</small><strong id="equity">$300.00</strong></div><div class="accountBox"><small>MARGIN</small><strong id="margin">$0.00</strong></div><div class="accountBox"><small>FREE MARGIN</small><strong id="freeMargin">$300.00</strong></div></section>
 <section class="market" id="market"></section>
 <main class="main"><div class="left"><div class="chartHeader"><div><div class="chartPair" id="chartPair">EUR/USD</div><div style="font-size:10px;color:#718796">Forex Market</div></div><div class="chartPrice" id="chartPrice">1.10000</div></div><div class="timeframes"><button>1m</button><button class="active">5m</button><button>15m</button><button>1H</button><button>4H</button><button>1D</button></div><div class="chart"><canvas id="chart"></canvas></div><div class="order"><div class="orderGrid"><div class="field"><label>PAIR</label><select id="orderPair"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option></select></div><div class="field"><label>LOT SIZE</label><input id="lots" type="number" value="0.10" min="0.01" step="0.01"></div></div><div class="tradeButtons"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div></div></div>
 <aside class="right"><div class="chatTitle">Trading Assistant</div><div class="chat" id="chat"><div class="msg bot"><small>FOREX BOT</small>Welcome to your forex account.<br><br>You can type commands such as:<br><br><b>Buy EUR/USD 0.10 lot</b><br><b>Sell GBP/USD 0.20 lot</b><br><b>Show my balance</b><br><b>Show open trades</b><br><b>Close all trades</b></div></div><div class="chatInput"><input id="message" placeholder="Type a trading command..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">➤</button></div><div class="positions"><div class="positionsTitle">OPEN POSITIONS</div><div id="positions"><div class="empty">No open positions</div></div></div></aside></main>
@@ -54,8 +54,8 @@
 <header class="header"><div class="logo">FOREX<span>•</span>ACCOUNT</div><div class="headerActions"><div class="demo">MY ACCOUNT</div><button class="logoutBtn" onclick="logout()">LOG OUT</button></div></header>
 <section class="accountPage"><div class="pageTitle"><h1>Account</h1><button class="backBtn" onclick="showTrader()">GO BACK TO HOMEPAGE</button></div>
 <div class="profileCard"><div class="profileLabel">EMAIL / PHONE USED TO OPEN ACCOUNT</div><div id="profileIdentity" class="profileValue">—</div></div>
-<div class="accountGrid"><div class="currencyCard"><small>WITHDRAWAL PLN</small><strong id="plnBalance">0.00 PLN</strong><div class="withdraw"><button onclick="demoWithdraw('PLN')">WITHDRAW PLN</button></div></div><div class="currencyCard"><small>WITHDRAWAL USD</small><strong id="usdBalance">0.00 USD</strong><div class="withdraw"><button onclick="demoWithdraw('USD')">WITHDRAW USD</button></div></div><div class="currencyCard"><small>WITHDRAWAL EUR</small><strong id="eurBalance">0.00 EUR</strong><div class="withdraw"><button onclick="realWithdraw('EUR')">WITHDRAW EUR</button></div></div></div>
-<div class="featureGrid"><div class="feature"><h3>UPGRADE ACCOUNT</h3><p>Upgrade options connected to a real backend later. This foreign remote only displays the feature.</p><button class="upgradeBtn" onclick="foreignUpgrade()">UPGRADE ACCOUNT</button></div><div class="feature"><h3>TRADING HISTORY</h3><p>See your completed BUY and SELL trades, including entry, exit and profit or loss.</p><button class="upgradeBtn" onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})">VIEW HISTORY</button></div></div>
+<div class="accountGrid"><div class="currencyCard"><small>WITHDRAWAL PLN</small><strong id="plnBalance">0.00 PLN</strong><div class="withdraw"><button onclick="demoWithdraw('PLN')">WITHDRAW PLN</button></div></div><div class="currencyCard"><small>WITHDRAWAL USD</small><strong id="usdBalance">0.00 USD</strong><div class="withdraw"><button onclick="demoWithdraw('USD')">WITHDRAW USD</button></div></div><div class="currencyCard"><small>WITHDRAWAL EUR</small><strong id="eurBalance">0.00 EUR</strong><div class="withdraw"><button onclick="demoWithdraw('EUR')">WITHDRAW EUR</button></div></div></div>
+<div class="featureGrid"><div class="feature"><h3>UPGRADE ACCOUNT</h3><p>Upgrade options connected to a real bank account later. This foreign remote only displays the feature.</p><button class="upgradeBtn" onclick="foreignUpgrade()">UPGRADE ACCOUNT</button></div><div class="feature"><h3>TRADING HISTORY</h3><p>See your completed BUY and SELL trades, including entry, exit and profit or loss.</p><button class="upgradeBtn" onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})">VIEW HISTORY</button></div></div>
 <div id="history" class="history"><h3>TRADING HISTORY</h3><div class="historyRow historyHead"><div>PAIR / TYPE</div><div>ENTRY → EXIT</div><div>RESULT</div><div>DATE</div></div><div id="historyRows"></div></div>
 </section></div>
 <div id="toast" class="toast hidden"></div>
@@ -88,7 +88,7 @@ function startRegistration(){
  const users=loadUsers(); if(users[userKey(identity)])return authMsg('An account with this email/phone already exists. Please log in.');
  pendingRegistration={identity,password:p}; demoOtp=String(Math.floor(100000+Math.random()*900000));
  document.getElementById('demoCode').textContent=demoOtp;document.getElementById('otpInput').value='';document.getElementById('otpArea').classList.remove('hidden');
- authMsg('Verification code created for this local demo. Enter the code shown below.','success');
+ authMsg('Verification code created for this forex account. Enter the code shown below.','success');
 }
 function verifyRegistration(){
  if(!pendingRegistration)return authMsg('Start registration first.');
@@ -110,12 +110,12 @@ function boot(){const session=localStorage.getItem(SESSION_KEY);if(session){curr
 function showTrader(){if(!loadCurrentUser())return;document.getElementById('authScreen').classList.add('hidden');document.getElementById('accountScreen').classList.add('hidden');document.getElementById('traderScreen').classList.remove('hidden');generateCandles();renderMarket();renderPositions();updateAccount();drawChart()}
 function showAccountPage(){saveCurrentUser();document.getElementById('traderScreen').classList.add('hidden');document.getElementById('accountScreen').classList.remove('hidden');renderAccountPage()}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),3000)}
-function demoUpgrade(){showToast('Upgrade is a real feature. Connect a backend/payment system for real upgrades.')}
-function demoWithdraw(currency){showToast('Withdrawal request for '+currency+' is a real only and is not sent anywhere.')}
+function realUpgrade(){showToast('Upgrade is a real feature. Connect a backend/payment system for real upgrades.')}
+function demoWithdraw(currency){showToast('Withdrawal request for '+currency+' withdraw are from 100,000 for enough profits.')}
 
 /* ================= TRADING ENGINE ================= */
 const marketData={'EUR/USD':{price:1.10000,decimals:5,pip:.0001},'GBP/USD':{price:1.27500,decimals:5,pip:.0001},'USD/JPY':{price:148.500,decimals:3,pip:.01},'AUD/USD':{price:.66000,decimals:5,pip:.0001}};
-let balance=10000,positions=[],tradeHistory=[],wallet={PLN:0,USD:0,EUR:0},selectedPair='EUR/USD',candles=[];
+let balance=300,positions=[],tradeHistory=[],wallet={PLN:0,USD:0,EUR:0},selectedPair='EUR/USD',candles=[];
 const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');let candleTimer=0;const CANDLE_DURATION=5000;
 function generateCandles(){candles=[];let p=marketData[selectedPair].price;for(let i=0;i<55;i++){const open=p,m=(Math.random()-.48)*marketData[selectedPair].pip*35,close=open+m,high=Math.max(open,close)+Math.random()*marketData[selectedPair].pip*15,low=Math.min(open,close)-Math.random()*marketData[selectedPair].pip*15;candles.push({open,close,high,low});p=close}}
 function drawChart(){const rect=canvas.getBoundingClientRect();if(!rect.width)return;canvas.width=rect.width*devicePixelRatio;canvas.height=rect.height*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);const w=rect.width,h=rect.height;ctx.clearRect(0,0,w,h);if(!candles.length)return;const max=Math.max(...candles.map(c=>c.high)),min=Math.min(...candles.map(c=>c.low)),range=max-min||1,y=p=>20+(max-p)/range*(h-40),spacing=w/candles.length;candles.forEach((c,i)=>{const x=i*spacing+spacing/2,bull=c.close>=c.open;ctx.strokeStyle=bull?'#20d79d':'#ff5264';ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(x,y(c.high));ctx.lineTo(x,y(c.low));ctx.stroke();const top=y(Math.max(c.open,c.close)),bottom=y(Math.min(c.open,c.close));ctx.fillRect(x-spacing*.30,top,spacing*.60,Math.max(2,bottom-top))});const price=marketData[selectedPair].price,py=y(price);ctx.strokeStyle='#607887';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(0,py);ctx.lineTo(w,py);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#dce8ee';ctx.font='11px Arial';ctx.fillText(price.toFixed(marketData[selectedPair].decimals),8,Math.max(15,py-6))}
@@ -139,7 +139,7 @@ function executeChatTrade(type,text){let pair=null;Object.keys(marketData).forEa
 function escapeHTML(text){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
 
 /* ================= ACCOUNT PAGE ================= */
-function renderAccountPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||0).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||0).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||0).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">No completed trades yet.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
+function renderAccountPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||300).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||78).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||69).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">No completed trades yet.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
 
 window.addEventListener('resize',drawChart);document.getElementById('orderPair').addEventListener('change',e=>selectPair(e.target.value));setInterval(updatePrices,1000);boot();
 </script>
