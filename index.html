@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Forex Real Trader</title>
+<title>Forex • Konto</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;background:#071019;color:#e8f1f7;min-height:100vh}.hidden{display:none!important}.app{max-width:1200px;margin:auto;min-height:100vh;display:flex;flex-direction:column}.header{background:#0b1722;border-bottom:1px solid #1c3546;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:15px}.logo{font-size:20px;font-weight:bold;color:#fff}.logo span{color:#21d69b}.demo{font-size:11px;padding:6px 10px;border-radius:20px;background:#123328;color:#35e5aa;border:1px solid #1e624b}.headerActions{display:flex;align-items:center;gap:8px}.accountBtn,.logoutBtn{border:1px solid #294858;background:#0e202d;color:#fff;padding:8px 11px;border-radius:5px;cursor:pointer;font-size:11px}.logoutBtn{color:#ff8791;border-color:#633542}.account{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#1b3444}.accountBox{background:#0c1924;padding:13px}.accountBox small{display:block;color:#8296a5;font-size:11px;margin-bottom:5px}.accountBox strong{font-size:16px}.market{background:#091722;padding:10px;display:flex;gap:8px;overflow-x:auto}.pair{min-width:125px;padding:10px;background:#0e202d;border:1px solid #1a3748;border-radius:7px;cursor:pointer}.pair.active{border-color:#20d79d}.pairName{font-size:12px;color:#91a5b3}.price{font-size:16px;font-weight:bold;margin-top:4px}.change{font-size:11px;color:#25d99e}.change.red{color:#ff5f6d}.main{flex:1;display:grid;grid-template-columns:1fr 380px;gap:1px;background:#1b3444}.left{background:#071019;min-width:0}.right{background:#091722;display:flex;flex-direction:column}.chartHeader{padding:13px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #173040}.chartPair{font-weight:bold}.chartPrice{font-size:18px;color:#35e5aa}.timeframes{display:flex;gap:5px;padding:8px;border-bottom:1px solid #173040}.timeframes button{background:#0d202c;color:#8ea4b2;border:1px solid #193746;padding:6px 9px;border-radius:4px;cursor:pointer}.timeframes button.active{color:#fff;background:#183442}.chart{height:390px;position:relative;overflow:hidden;background:linear-gradient(rgba(45,82,100,.16) 1px,transparent 1px),linear-gradient(90deg,rgba(45,82,100,.16) 1px,transparent 1px);background-size:50px 50px}canvas{width:100%;height:100%}.order{padding:12px;border-top:1px solid #173040;background:#091722}.orderGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.field label{display:block;font-size:10px;color:#8498a6;margin-bottom:4px}.field select,.field input{width:100%;padding:10px;background:#0d202c;color:#fff;border:1px solid #203d4d;border-radius:5px;outline:none}.tradeButtons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}.buy,.sell{border:0;padding:12px;border-radius:5px;color:white;font-weight:bold;cursor:pointer}.buy{background:#078c67}.sell{background:#c7354c}.buy:hover{background:#0aa77b}.sell:hover{background:#e1435c}.chatTitle{padding:13px;border-bottom:1px solid #193544;font-weight:bold}.chat{flex:1;min-height:300px;max-height:500px;overflow-y:auto;padding:12px}.msg{margin-bottom:12px;max-width:94%;padding:10px;border-radius:7px;font-size:13px;line-height:1.45}.bot{background:#102532;border:1px solid #1b4052}.user{background:#12382f;margin-left:auto;border:1px solid #1d5d4b}.msg small{display:block;color:#8296a5;font-size:9px;margin-bottom:4px}.chatInput{display:flex;padding:10px;border-top:1px solid #193544;gap:7px}.chatInput input{flex:1;background:#0d202c;color:white;border:1px solid #214050;border-radius:5px;padding:11px;outline:none}.chatInput button{width:45px;background:#16b985;border:0;color:#fff;border-radius:5px;cursor:pointer}.positions{border-top:1px solid #193544;background:#091722}.positionsTitle{padding:10px 12px;font-size:12px;font-weight:bold}.position{padding:10px 12px;border-top:1px solid #142c39;font-size:11px;display:grid;grid-template-columns:1fr 1fr 65px;align-items:center;gap:5px}.green{color:#26d99e}.red{color:#ff5d6d}.closeBtn{border:1px solid #713443;background:#29141a;color:#ff7380;border-radius:4px;padding:5px;cursor:pointer;font-size:10px}.empty{padding:14px;color:#687d8b;font-size:11px}
 /* AUTH */
 .authScreen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:radial-gradient(circle at top,#102c3a 0,#071019 55%)}.authCard{width:min(430px,100%);background:#0b1722;border:1px solid #1c3a4b;border-radius:12px;padding:24px;box-shadow:0 20px 60px rgba(0,0,0,.35)}.authLogo{text-align:center;font-size:24px;font-weight:bold;margin-bottom:7px}.authLogo span{color:#21d69b}.authSub{text-align:center;color:#8196a4;font-size:12px;margin-bottom:22px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;background:#071019;padding:4px;border-radius:7px;margin-bottom:18px}.tabs button{border:0;background:transparent;color:#8196a4;padding:10px;border-radius:5px;cursor:pointer}.tabs button.active{background:#173342;color:#fff}.authField{margin-bottom:12px}.authField label{display:block;color:#91a5b3;font-size:11px;margin-bottom:5px}.authField input{width:100%;padding:12px;background:#071019;color:#fff;border:1px solid #294657;border-radius:6px;outline:none}.primary{width:100%;padding:12px;border:0;border-radius:6px;background:#12b982;color:#fff;font-weight:bold;cursor:pointer;margin-top:4px}.secondary{width:100%;padding:11px;border:1px solid #294657;border-radius:6px;background:#0d202c;color:#fff;cursor:pointer;margin-top:9px}.authNote{font-size:10px;color:#6f8592;line-height:1.5;margin-top:14px;text-align:center}.error{background:#341720;border:1px solid #743443;color:#ff9aa4;padding:9px;border-radius:6px;font-size:11px;margin-bottom:12px}.success{background:#12352b;border:1px solid #22684f;color:#6ce9bc;padding:9px;border-radius:6px;font-size:11px;margin-bottom:12px}.otpBox{margin-top:12px;padding:12px;background:#0d202c;border:1px solid #214050;border-radius:7px}.demoCode{font-size:20px;letter-spacing:5px;text-align:center;color:#35e5aa;margin:7px 0}.smallBtn{border:0;background:#183b4b;color:#fff;padding:8px;border-radius:5px;cursor:pointer;font-size:11px;width:100%}
-/* ACCOUNT PAGE */
+  /* KONTO PAGE */
 .accountPage{padding:18px;flex:1}.pageTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.pageTitle h1{font-size:21px}.backBtn{border:1px solid #294858;background:#0e202d;color:#fff;padding:9px 13px;border-radius:5px;cursor:pointer}.profileCard{background:#0b1722;border:1px solid #1c3546;border-radius:9px;padding:18px;margin-bottom:12px}.profileLabel{color:#8196a4;font-size:10px;margin-bottom:5px}.profileValue{font-size:15px;word-break:break-all}.accountGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:12px}.currencyCard{background:#0b1722;border:1px solid #1c3546;border-radius:9px;padding:15px}.currencyCard small{color:#8196a4}.currencyCard strong{display:block;font-size:21px;margin-top:7px}.featureGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.feature{background:#0b1722;border:1px solid #1c3546;border-radius:9px;padding:16px;min-height:120px}.feature h3{font-size:14px;margin-bottom:8px}.feature p{font-size:11px;color:#8196a4;line-height:1.5}.upgradeBtn{margin-top:12px;border:0;background:#12b982;color:#fff;padding:10px 13px;border-radius:5px;cursor:pointer;font-weight:bold;font-size:11px}.history{margin-top:12px;background:#0b1722;border:1px solid #1c3546;border-radius:9px;overflow:hidden}.history h3{padding:13px;font-size:14px;border-bottom:1px solid #1c3546}.historyRow{padding:11px 13px;border-bottom:1px solid #142c39;font-size:11px;display:grid;grid-template-columns:1fr 1fr 1fr 90px;gap:5px}.historyHead{color:#8196a4;font-size:10px}.withdraw{margin-top:12px}.withdraw button{margin-right:7px;margin-top:7px;border:1px solid #294858;background:#0e202d;color:#fff;padding:9px 13px;border-radius:5px;cursor:pointer}.toast{position:fixed;right:15px;bottom:15px;max-width:330px;background:#102532;border:1px solid #2a5568;color:#fff;padding:12px 14px;border-radius:7px;font-size:12px;z-index:99;box-shadow:0 10px 30px #0008}
   .fundCard{
   background:#0b1722;
@@ -63,49 +63,50 @@
 <body>
 <div id="authScreen" class="authScreen">
   <div class="authCard">
-    <div class="authLogo">FOREX<span>•</span>ACCOUNT</div>
-    <div class="authSub">Private foreign trading account</div>
-    <div class="tabs"><button id="loginTab" class="active" onclick="showAuth('login')">LOGIN</button><button id="registerTab" onclick="showAuth('register')">CREATE ACCOUNT</button></div>
+    <div class="authLogo">FOREX<span>•</span>KONTO</div>
+    <div class="authSub">Prywatne konto handlowe Forex</div>
+    <div class="tabs"><button id="loginTab" class="active" onclick="showAuth('login')">LOGOWANIE</button><button id="registerTab" onclick="showAuth('register')">UTWÓRZ KONTO</button></div>
     <div id="authMessage"></div>
     <div id="loginForm">
-      <div class="authField"><label>EMAIL OR PHONE</label><input id="loginIdentity" autocomplete="username" placeholder="Email or phone number"></div>
-      <div class="authField"><label>PASSWORD</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Your password"></div>
-      <button class="primary" onclick="login()">LOGIN TO FOREX ACCOUNT</button>
-      <div class="authNote">Your account stays saved on this device after logout.</div>
+      <div class="authField"><label>E-MAIL LUB TELEFON</label><input id="loginIdentity" autocomplete="username" placeholder="Adres e-mail lub numer telefonu"></div>
+      <div class="authField"><label>HASŁO</label><input id="loginPassword" type="password" autocomplete="current-password" placeholder="Twoje hasło"></div>
+      <button class="primary" onclick="login()">LOGOWANIE TO FOREX KONTO</button>
+      <div class="authNote">Twoje konto pozostaje zapisane na tym urządzeniu po wylogowaniu.</div>
     </div>
     <div id="registerForm" class="hidden">
-      <div class="authField"><label>EMAIL OR PHONE</label><input id="regIdentity" autocomplete="username" placeholder="Email or phone number"></div>
-      <div class="authField"><label>CREATE PASSWORD</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="Create your personal password"></div>
-      <div class="authField"><label>CONFIRM PASSWORD</label><input id="regPassword2" type="password" autocomplete="new-password" placeholder="Confirm password"></div>
-      <button class="primary" onclick="startRegistration()">CREATE ACCOUNT & GET CODE</button>
+      <div class="authField"><label>E-MAIL LUB TELEFON</label><input id="regIdentity" autocomplete="username" placeholder="Adres e-mail lub numer telefonu"></div>
+      <div class="authField"><label>CREATE HASŁO</label><input id="regPassword" type="password" autocomplete="new-password" placeholder="Utwórz własne hasło"></div>
+      <div class="authField"><label>CONFIRM HASŁO</label><input id="regPassword2" type="password" autocomplete="new-password" placeholder="Potwierdź hasło"></div>
+      <button class="primary" onclick="startRegistration()">UTWÓRZ KONTO & GET CODE</button>
       <div id="otpArea" class="otpBox hidden">
-        <div style="font-size:11px;color:#91a5b3">VERIFICATION CODE</div>
+        <div style="font-size:11px;color:#91a5b3">KOD WERYFIKACYJNY</div>
         <div id="demoCode" class="demoCode">000000</div>
-        <div class="authField"><label>ENTER CODE</label><input id="otpInput" inputmode="numeric" maxlength="6" placeholder="6-digit code"></div>
-        <button class="smallBtn" onclick="verifyRegistration()">VERIFY & CREATE ACCOUNT</button>
+        <div class="authField"><label>WPROWADŹ KOD</label><input id="otpInput" inputmode="numeric" maxlength="6" placeholder="Kod 6-cyfrowy"></div>
+        <button class="smallBtn" onclick="verifyRegistration()">VERIFY & UTWÓRZ KONTO</button>
       </div>
-      <div class="authNote">This is a Secret presonal code. real SMS/email is sent. The verification code is shown on this screen.</div>
+      <div class="authNote">To jest tajny kod weryfikacyjny. Prawdziwy kod SMS/e-mail jest wysyłany. Kod weryfikacyjny jest wyświetlany na tym ekranie.</div>
     </div>
   </div>
 </div>
 
 <div id="traderScreen" class="app hidden">
-<header class="header"><div class="logo">FOREX<span>•</span>ACCOUNT</div><div class="headerActions"><div class="demo">FOREX TRADE</div><button class="accountBtn" onclick="showAccountPage()">ACCOUNT</button><button class="logoutBtn" onclick="logout()">LOG OUT</button></div></header>
-<section class="account"><div class="accountBox"><small>BALANCE</small><strong id="balance">$00.00</strong></div><div class="accountBox"><small>EQUITY</small><strong id="equity">$00.00</strong></div><div class="accountBox"><small>MARGIN</small><strong id="margin">$0.00</strong></div><div class="accountBox"><small>FREE MARGIN</small><strong id="freeMargin">$00.00</strong></div></section>
+<header class="header"><div class="logo">FOREX<span>•</span>KONTO</div><div class="headerActions"><div class="demo">HANDEL FOREX</div><button class="accountBtn" onclick="showKontoPage()">KONTO</button><button class="logoutBtn" onclick="logout()">WYLOGUJ</button></div></header>
+<section class="account"><div class="accountBox"><small>SALDO</small><strong id="balance">$00.00</strong></div><div class="accountBox"><small>KAPITAŁ</small><strong id="equity">$00.00</strong></div><div class="accountBox"><small>MARGINES</small><strong id="margin">$0.00</strong></div><div class="accountBox"><small>WOLNY MARGINESES</small><strong id="freeMargin">$00.00</strong></div></section>
 <section class="market" id="market"></section>
-<main class="main"><div class="left"><div class="chartHeader"><div><div class="chartPair" id="chartPair">EUR/USD</div><div style="font-size:10px;color:#718796">Forex Market</div></div><div class="chartPrice" id="chartPrice">1.10000</div></div><div class="timeframes"><button>1m</button><button class="active">5m</button><button>15m</button><button>1H</button><button>4H</button><button>1D</button></div><div class="chart"><canvas id="chart"></canvas></div><div class="order"><div class="orderGrid"><div class="field"><label>PAIR</label><select id="orderPair"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option></select></div><div class="field"><label>LOT SIZE</label><input id="lots" type="number" value="0.10" min="0.01" step="0.01"></div></div><div class="tradeButtons"><button class="buy" onclick="placeTrade('BUY')">BUY</button><button class="sell" onclick="placeTrade('SELL')">SELL</button></div></div></div>
-<aside class="right"><div class="chatTitle">Trading Assistant</div><div class="chat" id="chat"><div class="msg bot"><small>FOREX BOT</small>Welcome to your forex account.<br><br>You can type commands such as:<br><br><b>Buy EUR/USD 0.10 lot</b><br><b>Sell GBP/USD 0.20 lot</b><br><b>Show my balance</b><br><b>Show open trades</b><br><b>Close all trades</b></div></div><div class="chatInput"><input id="message" placeholder="Type a trading command..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">➤</button></div><div class="positions"><div class="positionsTitle">OPEN POSITIONS</div><div id="positions"><div class="empty">No open positions</div></div></div></aside></main>
+<main class="main"><div class="left"><div class="chartHeader"><div><div class="chartPair" id="chartPair">EUR/USD</div><div style="font-size:10px;color:#718796">Rynek Forex</div></div><div class="chartPrice" id="chartPrice">1.10000</div></div><div class="timeframes"><button>1m</button><button class="active">5m</button><button>15m</button><button>1H</button><button>4H</button><button>1D</button></div><div class="chart"><canvas id="chart"></canvas></div><div class="order"><div class="orderGrid"><div class="field"><label>PARA</label><select id="orderPair"><option>EUR/USD</option><option>GBP/USD</option><option>USD/JPY</option><option>AUD/USD</option></select></div><div class="field"><label>WIELKOŚĆ LOTU</label><input id="lots" type="number" value="0.10" min="0.01" step="0.01"></div></div><div class="tradeButtons"><button class="buy" onclick="placeTrade('KUP')">KUP</button><button class="sell" onclick="placeTrade('SPRZEDAJ')">SPRZEDAJ</button></div></div></div>
+<aside class="right"><div class="chatTitle">Asystent handlu</div><div class="chat" id="chat"><div class="msg bot"><small>BOT FOREX</small>Witaj na swoim koncie Forex.<br><br>Możesz wpisać polecenia, takie jak:<br><br><b>Kup EUR/USD 0,10 lot</b><br><b>Sprzedaj GBP/USD 0,20 lot</b><br><b>Pokaż moje saldo</b><br><b>Pokaż otwarte transakcje</b><br><b>Zamknij wszystkie transakcje</b></div></div><div
+class="chatInput"><input id="message" placeholder="Type a trading command..." onkeydown="if(event.key==='Enter')sendMessage()"><button onclick="sendMessage()">➤</button></div><div class="positions"><div class="positionsTitle">OTWARTE POZYCJE</div><div id="positions"><div class="empty">Brak otwartych pozycji</div></div></div></aside></main>
 </div>
 
 <div id="accountScreen" class="app hidden">
-<header class="header"><div class="logo">FOREX<span>•</span>ACCOUNT</div><div class="headerActions"><div class="demo">MY ACCOUNT</div><button class="logoutBtn" onclick="logout()">LOG OUT</button></div></header>
-<section class="accountPage"><div class="pageTitle"><h1>Account</h1><button class="backBtn" onclick="showTrader()">GO BACK TO HOMEPAGE</button></div>
-<div class="profileCard"><div class="profileLabel">EMAIL / PHONE USED TO OPEN ACCOUNT</div><div id="profileIdentity" class="profileValue">—</div></div>
+<header class="header"><div class="logo">FOREX<span>•</span>KONTO</div><div class="headerActions"><div class="demo">MY KONTO</div><button class="logoutBtn" onclick="logout()">WYLOGUJ</button></div></header>
+<section class="accountPage"><div class="pageTitle"><h1>Konto</h1><button class="backBtn" onclick="showTrader()">GO BACK TO HOMEPAGE</button></div>
+<div class="profileCard"><div class="profileLabel">EMAIL / PHONE USED TO OPEN KONTO</div><div id="profileIdentity" class="profileValue">—</div></div>
   <div class="fundCard">
-  <div class="fundTitle">FUND YOUR FOREX-ACCOUNT</div>
+  <div class="fundTitle">FUND YOUR FOREX-KONTO</div>
   <div class="fundText">
-    This is your forex wallet address for depositing funds into your trading account.
-    You can use this address whenever you want to fund your FOREX-ACCOUNT.
+    To jest adres Twojego portfela Forex do wpłacania środków na konto handlowe.
+    You can use this address whenever you want to fund your FOREX-KONTO.
   </div>
 
   <div class="walletAddress" id="forexWalletAddress">
@@ -113,20 +114,20 @@
   </div>
 
   <button class="copyWalletBtn" onclick="copyForexWallet()">
-    COPY ADDRESS
+    KOPIUJ ADRES
   </button>
   </div>
-<div class="accountGrid"><div class="currencyCard"><small>WITHDRAWAL PLN</small><strong id="plnBalance">0.00 PLN</strong><div class="withdraw"><button onclick="demoWithdraw('PLN')">WITHDRAW PLN</button></div></div><div class="currencyCard"><small>WITHDRAWAL USD</small><strong id="usdBalance">0.00 USD</strong><div class="withdraw"><button onclick="demoWithdraw('USD')">WITHDRAW USD</button></div></div><div class="currencyCard"><small>WITHDRAWAL EUR</small><strong id="eurBalance">0.00 EUR</strong><div class="withdraw"><button onclick="demoWithdraw('EUR')">WITHDRAW EUR</button></div></div></div>
-<div class="featureGrid"><div class="feature"><h3>UPGRADE ACCOUNT</h3><p>Upgrade options connected to a real bank account later. This foreign remote only displays the feature.</p><button class="upgradeBtn" onclick="foreignUpgrade()">UPGRADE ACCOUNT</button></div><div class="feature"><h3>TRADING HISTORY</h3><p>See your completed BUY and SELL trades, including entry, exit and profit or loss.</p><button class="upgradeBtn" onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})">VIEW HISTORY</button></div></div>
-<div id="history" class="history"><h3>TRADING HISTORY</h3><div class="historyRow historyHead"><div>PAIR / TYPE</div><div>ENTRY → EXIT</div><div>RESULT</div><div>DATE</div></div><div id="historyRows"></div></div>
+<div class="accountGrid"><div class="currencyCard"><small>WYPŁATA PLN</small><strong id="plnBalance">0.00 PLN</strong><div class="withdraw"><button onclick="demoWithdraw('PLN')">WYPŁAĆ PLN</button></div></div><div class="currencyCard"><small>WYPŁATA USD</small><strong id="usdBalance">0.00 USD</strong><div class="withdraw"><button onclick="demoWithdraw('USD')">WYPŁAĆ USD</button></div></div><div class="currencyCard"><small>WYPŁATA EUR</small><strong id="eurBalance">0.00 EUR</strong><div class="withdraw"><button onclick="demoWithdraw('EUR')">WYPŁAĆ EUR</button></div></div></div>
+<div class="featureGrid"><div class="feature"><h3>UPGRADE KONTO</h3><p>Opcje ulepszenia mogą zostać później połączone z prawdziwym kontem bankowym. Ta wersja demonstracyjna tylko wyświetla tę funkcję.</p><button class="upgradeBtn" onclick="foreignUpgrade()">UPGRADE KONTO</button></div><div class="feature"><h3>HISTORIA TRANSAKCJI</h3><p>See your completed KUP and SPRZEDAJ trades, including entry, exit and profit or loss.</p><button class="upgradeBtn" onclick="document.getElementById('history').scrollIntoView({behavior:'smooth'})">POKAŻ HISTORIĘ</button></div></div>
+<div id="history" class="history"><h3>HISTORIA TRANSAKCJI</h3><div class="historyRow historyHead"><div>PARA / TYPE</div><div>WEJŚCIE → WYJŚCIE</div><div>WYNIK</div><div>DATA</div></div><div id="historyRows"></div></div>
 </section></div>
 <div id="toast" class="toast hidden"></div>
 <script>
-/* ================= AUTH + PERSISTENT FOREIGN ACCOUNTS ================= */
+/* ================= AUTH + PERSISTENT FOREIGN KONTOS ================= */
 const USERS_KEY='forex_real_users_v3';
 const SESSION_KEY='forex_real_session_v3';
-  const GLOBAL_BALANCE = 00;
-const GLOBAL_BALANCE_KEY = 'forex_global_balance_v1';
+  const GLOBAL_SALDO = 00;
+const GLOBAL_SALDO_KEY = 'forex_global_balance_v1';
 let currentUserId=null;
 let pendingRegistration=null;
 let demoOtp=null;
@@ -134,22 +135,22 @@ let demoOtp=null;
 function loadUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY)||'{}')}catch(e){return {}}}
 function saveUsers(users){localStorage.setItem(USERS_KEY,JSON.stringify(users))}
   function syncGlobalBalance(){
-  const previous=Number(localStorage.getItem(GLOBAL_BALANCE_KEY));
+  const previous=Number(localStorage.getItem(GLOBAL_SALDO_KEY));
 
-  if(previous===GLOBAL_BALANCE)return;
+  if(previous===GLOBAL_SALDO)return;
 
   const users=loadUsers();
 
   Object.keys(users).forEach(key=>{
-    users[key].balance=GLOBAL_BALANCE;
+    users[key].balance=GLOBAL_SALDO;
   });
 
   saveUsers(users);
-  localStorage.setItem(GLOBAL_BALANCE_KEY,String(GLOBAL_BALANCE));
+  localStorage.setItem(GLOBAL_SALDO_KEY,String(GLOBAL_SALDO));
 
   if(currentUserId && users[currentUserId]){
-    balance=GLOBAL_BALANCE;
-    updateAccount();
+    balance=GLOBAL_SALDO;
+    updateKonto();
   }
   }
 function currentUser(){const users=loadUsers();return currentUserId&&users[currentUserId]?users[currentUserId]:null}
@@ -165,30 +166,30 @@ function showAuth(mode){
 function authMsg(html,type='error'){document.getElementById('authMessage').innerHTML='<div class="'+type+'">'+html+'</div>'}
 function startRegistration(){
  const identity=normalizeIdentity(document.getElementById('regIdentity').value), p=document.getElementById('regPassword').value, p2=document.getElementById('regPassword2').value;
- if(!identity)return authMsg('Enter an email address or phone number.');
- if(p.length<6)return authMsg('Password must contain at least 6 characters.');
- if(p!==p2)return authMsg('The passwords do not match.');
- const users=loadUsers(); if(users[userKey(identity)])return authMsg('An account with this email/phone already exists. Please log in.');
+ if(!identity)return authMsg('Wpisz adres e-mail lub numer telefonu.');
+ if(p.length<6)return authMsg('Hasło musi zawierać co najmniej 6 znaków.');
+ if(p!==p2)return authMsg('Hasła nie są zgodne.');
+ const users=loadUsers(); if(users[userKey(identity)])return authMsg('Konto z tym adresem e-mail/numerem telefonu już istnieje. Zaloguj się.');
  pendingRegistration={identity,password:p}; demoOtp=String(Math.floor(100000+Math.random()*900000));
  document.getElementById('demoCode').textContent=demoOtp;document.getElementById('otpInput').value='';document.getElementById('otpArea').classList.remove('hidden');
- authMsg('Verification code created for this forex account. Enter the code shown below.','success');
+ authMsg('Kod weryfikacyjny został utworzony dla tego konta Forex. Wprowadź kod pokazany poniżej.','success');
 }
 function verifyRegistration(){
- if(!pendingRegistration)return authMsg('Start registration first.');
- if(document.getElementById('otpInput').value.trim()!==demoOtp)return authMsg('Incorrect verification code.');
+ if(!pendingRegistration)return authMsg('Najpierw rozpocznij rejestrację.');
+ if(document.getElementById('otpInput').value.trim()!==demoOtp)return authMsg('Nieprawidłowy kod weryfikacyjny.');
  const id=pendingRegistration.identity,key=userKey(id),users=loadUsers();
- users[key]={id:key,identity:id,password:pendingRegistration.password,balance:GLOBAL_BALANCE,positions:[],history:[],wallet:{PLN:0,USD:0,EUR:0},createdAt:new Date().toISOString()};
- saveUsers(users);currentUserId=key;localStorage.setItem(SESSION_KEY,key);pendingRegistration=null;demoOtp=null;authMsg('Account created successfully.','success');
+ users[key]={id:key,identity:id,password:pendingRegistration.password,balance:GLOBAL_SALDO,positions:[],history:[],wallet:{PLN:0,USD:0,EUR:0},createdAt:new Date().toISOString()};
+ saveUsers(users);currentUserId=key;localStorage.setItem(SESSION_KEY,key);pendingRegistration=null;demoOtp=null;authMsg('Konto created successfully.','success');
  setTimeout(showTrader,250);
 }
 function login(){
  const identity=normalizeIdentity(document.getElementById('loginIdentity').value),password=document.getElementById('loginPassword').value,users=loadUsers(),u=users[userKey(identity)];
- if(!u||u.identity!==identity||u.password!==password)return authMsg('Email/phone or password is incorrect.');
+ if(!u||u.identity!==identity||u.password!==password)return authMsg('E-mail/telefon lub hasło jest nieprawidłowe.');
  currentUserId=u.id;localStorage.setItem(SESSION_KEY,currentUserId);document.getElementById('loginPassword').value='';showTrader();
 }
 function logout(){saveCurrentUser();currentUserId=null;localStorage.removeItem(SESSION_KEY);document.getElementById('traderScreen').classList.add('hidden');document.getElementById('accountScreen').classList.add('hidden');document.getElementById('authScreen').classList.remove('hidden');showAuth('login');}
 function saveCurrentUser(){if(!currentUserId)return;const users=loadUsers(),u=users[currentUserId];if(!u)return;u.balance=balance;u.positions=positions;u.history=tradeHistory;u.wallet=wallet;users[currentUserId]=u;saveUsers(users)}
-function loadCurrentUser(){const u=currentUser();if(!u)return false;balance=Number(u.balance??GLOBAL_BALANCE);positions=Array.isArray(u.positions)?u.positions:[];tradeHistory=Array.isArray(u.history)?u.history:[];wallet=u.wallet||{PLN:0,USD:0,EUR:0};return true}
+function loadCurrentUser(){const u=currentUser();if(!u)return false;balance=Number(u.balance??GLOBAL_SALDO);positions=Array.isArray(u.positions)?u.positions:[];tradeHistory=Array.isArray(u.history)?u.history:[];wallet=u.wallet||{PLN:0,USD:0,EUR:0};return true}
 function boot(){
   syncGlobalBalance();
 
@@ -207,33 +208,34 @@ function boot(){
 
   document.getElementById('authScreen').classList.remove('hidden');
 }
-function showTrader(){if(!loadCurrentUser())return;document.getElementById('authScreen').classList.add('hidden');document.getElementById('accountScreen').classList.add('hidden');document.getElementById('traderScreen').classList.remove('hidden');generateCandles();renderMarket();renderPositions();updateAccount();drawChart()}
-function showAccountPage(){saveCurrentUser();document.getElementById('traderScreen').classList.add('hidden');document.getElementById('accountScreen').classList.remove('hidden');renderAccountPage()}
+function showTrader(){if(!loadCurrentUser())return;document.getElementById('authScreen').classList.add('hidden');document.getElementById('accountScreen').classList.add('hidden');document.getElementById('traderScreen').classList.remove('hidden');generateCandles();renderMarket();renderPositions();updateKonto();drawChart()}
+function showKontoPage(){saveCurrentUser();document.getElementById('traderScreen').classList.add('hidden');document.getElementById('accountScreen').classList.remove('hidden');renderKontoPage()}
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),3000)}
-function realUpgrade(){showToast('Upgrade is a real feature. Connect a backend/payment system for real upgrades.')}
+function realUpgrade(){showToast('Ulepszenie jest funkcją systemu. Aby obsługiwać prawdziwe ulepszenia, należy podłączyć system backend/płatności.')}
 function demoWithdraw(currency){showToast('Withdrawal request for '+currency+' withdraw are from 100,000 for enough profits.')}
 
 /* ================= TRADING ENGINE ================= */
 const marketData={'EUR/USD':{price:1.10000,decimals:5,pip:.0001},'GBP/USD':{price:1.27500,decimals:5,pip:.0001},'USD/JPY':{price:148.500,decimals:3,pip:.01},'AUD/USD':{price:.66000,decimals:5,pip:.0001}};
-let balance=GLOBAL_BALANCE,positions=[],tradeHistory=[],wallet={PLN:0,USD:0,EUR:0},selectedPair='EUR/USD',candles=[];
+let
+  balance=GLOBAL_SALDO,positions=[],tradeHistory=[],wallet={PLN:0,USD:0,EUR:0},selectedPair='EUR/USD',candles=[];
 const canvas=document.getElementById('chart'),ctx=canvas.getContext('2d');let candleTimer=0;const CANDLE_DURATION=5000;
 function generateCandles(){candles=[];let p=marketData[selectedPair].price;for(let i=0;i<55;i++){const open=p,m=(Math.random()-.48)*marketData[selectedPair].pip*35,close=open+m,high=Math.max(open,close)+Math.random()*marketData[selectedPair].pip*15,low=Math.min(open,close)-Math.random()*marketData[selectedPair].pip*15;candles.push({open,close,high,low});p=close}}
 function drawChart(){const rect=canvas.getBoundingClientRect();if(!rect.width)return;canvas.width=rect.width*devicePixelRatio;canvas.height=rect.height*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);const w=rect.width,h=rect.height;ctx.clearRect(0,0,w,h);if(!candles.length)return;const max=Math.max(...candles.map(c=>c.high)),min=Math.min(...candles.map(c=>c.low)),range=max-min||1,y=p=>20+(max-p)/range*(h-40),spacing=w/candles.length;candles.forEach((c,i)=>{const x=i*spacing+spacing/2,bull=c.close>=c.open;ctx.strokeStyle=bull?'#20d79d':'#ff5264';ctx.fillStyle=ctx.strokeStyle;ctx.beginPath();ctx.moveTo(x,y(c.high));ctx.lineTo(x,y(c.low));ctx.stroke();const top=y(Math.max(c.open,c.close)),bottom=y(Math.min(c.open,c.close));ctx.fillRect(x-spacing*.30,top,spacing*.60,Math.max(2,bottom-top))});const price=marketData[selectedPair].price,py=y(price);ctx.strokeStyle='#607887';ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(0,py);ctx.lineTo(w,py);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle='#dce8ee';ctx.font='11px Arial';ctx.fillText(price.toFixed(marketData[selectedPair].decimals),8,Math.max(15,py-6))}
-function updatePrices(){Object.keys(marketData).forEach(pair=>{const d=marketData[pair];d.price+=(Math.random()-.5)*d.pip*3;if(d.price<=0)d.price=d.pip*100});if(candles.length){const c=candles[candles.length-1],p=marketData[selectedPair].price;c.close=p;c.high=Math.max(c.high,p);c.low=Math.min(c.low,p)}candleTimer+=1000;if(candleTimer>=CANDLE_DURATION){candleTimer=0;const p=marketData[selectedPair].price;candles.push({open:p,close:p,high:p,low:p});if(candles.length>55)candles.shift()}renderMarket();updatePositions();updateAccount();drawChart();saveCurrentUser()}
+function updatePrices(){Object.keys(marketData).forEach(pair=>{const d=marketData[pair];d.price+=(Math.random()-.5)*d.pip*3;if(d.price<=0)d.price=d.pip*100});if(candles.length){const c=candles[candles.length-1],p=marketData[selectedPair].price;c.close=p;c.high=Math.max(c.high,p);c.low=Math.min(c.low,p)}candleTimer+=1000;if(candleTimer>=CANDLE_DURATION){candleTimer=0;const p=marketData[selectedPair].price;candles.push({open:p,close:p,high:p,low:p});if(candles.length>55)candles.shift()}renderMarket();updatePositions();updateKonto();drawChart();saveCurrentUser()}
 function selectPair(pair){selectedPair=pair;document.getElementById('chartPair').textContent=pair;document.getElementById('orderPair').value=pair;candleTimer=0;generateCandles();renderMarket();drawChart()}
-function renderMarket(){const market=document.getElementById('market');market.innerHTML='';Object.keys(marketData).forEach(pair=>{const d=marketData[pair],div=document.createElement('div');div.className='pair '+(pair===selectedPair?'active':'');div.onclick=()=>selectPair(pair);div.innerHTML='<div class="pairName">'+pair+'</div><div class="price">'+d.price.toFixed(d.decimals)+'</div><div class="change">LIVE</div>';market.appendChild(div)});document.getElementById('chartPrice').textContent=marketData[selectedPair].price.toFixed(marketData[selectedPair].decimals)}
-function calculatePnL(pos){const current=marketData[pos.pair].price,difference=pos.type==='BUY'?current-pos.entry:pos.entry-current,pipValue=pos.pair==='USD/JPY'?1000:100000;return difference*pos.lots*pipValue}
+function renderMarket(){const market=document.getElementById('market');market.innerHTML='';Object.keys(marketData).forEach(pair=>{const d=marketData[pair],div=document.createElement('div');div.className='pair '+(pair===selectedPair?'active':'');div.onclick=()=>selectPair(pair);div.innerHTML='<div class="pairName">'+pair+'</div><div class="price">'+d.price.toFixed(d.decimals)+'</div><div class="change">NA ŻYWO</div>';market.appendChild(div)});document.getElementById('chartPrice').textContent=marketData[selectedPair].price.toFixed(marketData[selectedPair].decimals)}
+function calculatePnL(pos){const current=marketData[pos.pair].price,difference=pos.type==='KUP'?current-pos.entry:pos.entry-current,pipValue=pos.pair==='USD/JPY'?1000:100000;return difference*pos.lots*pipValue}
 function placeTrade(type){
   if(balance < 150){
-    addBot('<b>Trading unavailable</b><br><br>Your balance must be at least <b>$150.00</b> to open a trade.<br>Current balance: <span class="red">$'+balance.toFixed(2)+'</span>');
-    showToast('Minimum balance of $150 required to trade.');
+    addBot('<b>Handel niedostępny</b><br><br>Twoje saldo musi wynosić co najmniej <b>$150,00</b>, aby otworzyć transakcję.<br>Aktualne saldo: <span class="red">$'+balance.toFixed(2)+'</span>');
+    showToast('Do handlu wymagane jest minimalne saldo $150.');
     return;
   }
 
   const pair=document.getElementById('orderPair').value,
         lots=parseFloat(document.getElementById('lots').value);
 
-  if(!lots||lots<=0)return addBot('Please enter a valid lot size.');
+  if(!lots||lots<=0)return addBot('Wprowadź prawidłową wielkość lotu.');
 
   const price=marketData[pair].price;
 
@@ -246,39 +248,39 @@ function placeTrade(type){
     time:new Date().toISOString()
   });
 
-  addBot('<b>Order executed</b><br><br>'+type+' '+pair+
-    '<br>Volume: '+lots.toFixed(2)+' lot<br>Entry: '+
+  addBot('<b>Zlecenie wykonane</b><br><br>'+type+' '+pair+
+    '<br>Wolumen: '+lots.toFixed(2)+' lot<br>Wejście: '+
     price.toFixed(marketData[pair].decimals)+
-    '<br>Status: <span class="green">OPEN</span>');
+    '<br>Status: <span class="green">OTWARTA</span>');
 
   renderPositions();
-  updateAccount();
+  updateKonto();
   saveCurrentUser();
 }
-function closePosition(id){const i=positions.findIndex(p=>p.id===id);if(i<0)return;const pos=positions[i],pnl=calculatePnL(pos),exit=marketData[pos.pair].price;balance+=pnl;tradeHistory.unshift({id:pos.id,pair:pos.pair,type:pos.type,lots:pos.lots,entry:pos.entry,exit,pnl,closedAt:new Date().toISOString()});positions.splice(i,1);addBot('<b>Position closed</b><br><br>'+pos.type+' '+pos.pair+'<br>Result: <span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span>');renderPositions();updateAccount();saveCurrentUser()}
-function renderPositions(){const box=document.getElementById('positions');if(!positions.length){box.innerHTML='<div class="empty">No open positions</div>';return}box.innerHTML='';positions.forEach(pos=>{const pnl=calculatePnL(pos),div=document.createElement('div');div.className='position';div.innerHTML='<div><b>'+pos.type+' '+pos.pair+'</b><br>'+pos.lots.toFixed(2)+' lot</div><div>'+pos.entry.toFixed(marketData[pos.pair].decimals)+'<br><span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span></div><button class="closeBtn" onclick="closePosition('+pos.id+')">CLOSE</button>';box.appendChild(div)})}
+function closePosition(id){const i=positions.findIndex(p=>p.id===id);if(i<0)return;const pos=positions[i],pnl=calculatePnL(pos),exit=marketData[pos.pair].price;balance+=pnl;tradeHistory.unshift({id:pos.id,pair:pos.pair,type:pos.type,lots:pos.lots,entry:pos.entry,exit,pnl,closedAt:new Date().toISOString()});positions.splice(i,1);addBot('<b>Pozycja zamknięta</b><br><br>'+pos.type+' '+pos.pair+'<br>Wynik: <span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span>');renderPositions();updateKonto();saveCurrentUser()}
+function renderPositions(){const box=document.getElementById('positions');if(!positions.length){box.innerHTML='<div class="empty">Brak otwartych pozycji</div>';return}box.innerHTML='';positions.forEach(pos=>{const pnl=calculatePnL(pos),div=document.createElement('div');div.className='position';div.innerHTML='<div><b>'+pos.type+' '+pos.pair+'</b><br>'+pos.lots.toFixed(2)+' lot</div><div>'+pos.entry.toFixed(marketData[pos.pair].decimals)+'<br><span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span></div><button class="closeBtn" onclick="closePosition('+pos.id+')">CLOSE</button>';box.appendChild(div)})}
 function updatePositions(){if(!document.getElementById('positions'))return;renderPositions()}
 function getEquity(){return balance+positions.reduce((s,p)=>s+calculatePnL(p),0)}
-function updateAccount(){const floating=getEquity()-balance,margin=positions.reduce((s,p)=>s+p.lots*1000,0),equity=balance+floating,free=equity-margin;document.getElementById('balance').textContent='$'+balance.toFixed(2);document.getElementById('equity').textContent='$'+equity.toFixed(2);document.getElementById('margin').textContent='$'+margin.toFixed(2);document.getElementById('freeMargin').textContent='$'+free.toFixed(2)}
+function updateKonto(){const floating=getEquity()-balance,margin=positions.reduce((s,p)=>s+p.lots*1000,0),equity=balance+floating,free=equity-margin;document.getElementById('balance').textContent='$'+balance.toFixed(2);document.getElementById('equity').textContent='$'+equity.toFixed(2);document.getElementById('margin').textContent='$'+margin.toFixed(2);document.getElementById('freeMargin').textContent='$'+free.toFixed(2)}
 
 /* ================= CHAT ================= */
-function addUser(text){const chat=document.getElementById('chat'),div=document.createElement('div');div.className='msg user';div.innerHTML='<small>YOU</small>'+escapeHTML(text);chat.appendChild(div);chat.scrollTop=chat.scrollHeight}
-function addBot(text){const chat=document.getElementById('chat'),div=document.createElement('div');div.className='msg bot';div.innerHTML='<small>FOREX BOT</small>'+text;chat.appendChild(div);chat.scrollTop=chat.scrollHeight}
+function addUser(text){const chat=document.getElementById('chat'),div=document.createElement('div');div.className='msg user';div.innerHTML='<small>TY</small>'+escapeHTML(text);chat.appendChild(div);chat.scrollTop=chat.scrollHeight}
+function addBot(text){const chat=document.getElementById('chat'),div=document.createElement('div');div.className='msg bot';div.innerHTML='<small>BOT FOREX</small>'+text;chat.appendChild(div);chat.scrollTop=chat.scrollHeight}
 function sendMessage(){const input=document.getElementById('message'),text=input.value.trim();if(!text)return;addUser(text);input.value='';processCommand(text)}
-function processCommand(text){const lower=text.toLowerCase();if(lower.includes('balance')||lower.includes('account')){addBot('<b>Account</b><br><br>Balance: $'+balance.toFixed(2)+'<br>Equity: $'+getEquity().toFixed(2)+'<br>Open trades: '+positions.length);return}if(lower.includes('open trades')||lower.includes('open positions')||lower.includes('positions')){if(!positions.length)return addBot('You currently have no open positions.');let html='<b>Open Positions</b><br><br>';positions.forEach(p=>{const pnl=calculatePnL(p);html+=p.type+' '+p.pair+' '+p.lots.toFixed(2)+' lot<br>Entry: '+p.entry.toFixed(marketData[p.pair].decimals)+'<br>P/L: <span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span><br><br>'});addBot(html);return}if(lower.includes('close all')||lower.includes('close trades')){if(!positions.length)return addBot('There are no open trades to close.');[...positions].forEach(p=>closePosition(p.id));return}if(lower.includes('buy'))return executeChatTrade('BUY',text);if(lower.includes('sell'))return executeChatTrade('SELL',text);if(lower.includes('help')||lower.includes('commands'))return addBot('<b>Commands</b><br><br>Buy EUR/USD 0.10 lot<br>Sell GBP/USD 0.20 lot<br>Show my balance<br>Show open trades<br>Close all trades');addBot('I did not recognize that command. Try <b>Buy EUR/USD 0.10 lot</b> or <b>Show my balance</b>.')}
-function executeChatTrade(type,text){let pair=null;Object.keys(marketData).forEach(p=>{if(text.toUpperCase().includes(p))pair=p});if(!pair)return addBot('Please specify EUR/USD, GBP/USD, USD/JPY or AUD/USD.');const nums=text.match(/\d+(?:\.\d+)?/g);let lots=.10;if(nums){const candidate=parseFloat(nums[nums.length-1]);if(candidate<=100)lots=candidate}document.getElementById('orderPair').value=pair;document.getElementById('lots').value=lots;placeTrade(type)}
+function processCommand(text){const lower=text.toLowerCase();if(lower.includes('saldo')||lower.includes('balance')||lower.includes('konto')){addBot('<b>Konto</b><br><br>Balance: $'+balance.toFixed(2)+'<br>Equity: $'+getEquity().toFixed(2)+'<br>Otwarte transakcje: '+positions.length);return}if(lower.includes('otwarte transakcje')||lower.includes('otwarte pozycje')||lower.includes('pozycje')||lower.includes('open trades')||lower.includes('open positions')||lower.includes('positions')){if(!positions.length)return addBot('Obecnie nie masz otwartych pozycji.');let html='<b>Otwarte pozycje</b><br><br>';positions.forEach(p=>{const pnl=calculatePnL(p);html+=p.type+' '+p.pair+' '+p.lots.toFixed(2)+' lot<br>Wejście: '+p.entry.toFixed(marketData[p.pair].decimals)+'<br>Zysk/strata: <span class="'+(pnl>=0?'green':'red')+'">'+(pnl>=0?'+':'')+'$'+pnl.toFixed(2)+'</span><br><br>'});addBot(html);return}if(lower.includes('zamknij wszystkie')||lower.includes('zamknij transakcje')||lower.includes('close all')||lower.includes('close trades')){if(!positions.length)return addBot('Nie ma otwartych transakcji do zamknięcia.');[...positions].forEach(p=>closePosition(p.id));return}if(lower.includes('kup')||lower.includes('buy'))return executeChatTrade('KUP',text);if(lower.includes('sprzedaj')||lower.includes('sell'))return executeChatTrade('SPRZEDAJ',text);if(lower.includes('pomoc')||lower.includes('polecenia')||lower.includes('help')||lower.includes('commands'))return addBot('<b>Polecenia</b><br><br>Kup EUR/USD 0,10 lot<br>Sprzedaj GBP/USD 0,20 lot<br>Pokaż moje saldo<br>Pokaż otwarte transakcje<br>Zamknij wszystkie transakcje');addBot('I did not recognize that command. Try <b>Kup EUR/USD 0,10 lot</b> or <b>Pokaż moje saldo</b>.')}
+function executeChatTrade(type,text){let pair=null;Object.keys(marketData).forEach(p=>{if(text.toUpperCase().includes(p))pair=p});if(!pair)return addBot('Podaj EUR/USD, GBP/USD, USD/JPY lub AUD/USD.');const nums=text.match(/\d+(?:\.\d+)?/g);let lots=.10;if(nums){const candidate=parseFloat(nums[nums.length-1]);if(candidate<=100)lots=candidate}document.getElementById('orderPair').value=pair;document.getElementById('lots').value=lots;placeTrade(type)}
 function escapeHTML(text){return text.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#039;')}
 
-/* ================= ACCOUNT PAGE ================= */
-function renderAccountPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||00).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||00).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||00).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">No completed trades yet.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
+/* ================= KONTO PAGE ================= */
+function renderKontoPage(){const u=currentUser();if(!u)return;document.getElementById('profileIdentity').textContent=u.identity;document.getElementById('plnBalance').textContent=Number(wallet.PLN||00).toFixed(2)+' PLN';document.getElementById('usdBalance').textContent=Number(wallet.USD||00).toFixed(2)+' USD';document.getElementById('eurBalance').textContent=Number(wallet.EUR||00).toFixed(2)+' EUR';const box=document.getElementById('historyRows');if(!tradeHistory.length){box.innerHTML='<div class="empty">Nie ma jeszcze zakończonych transakcji.</div>';return}box.innerHTML=tradeHistory.map(h=>'<div class="historyRow"><div><b>'+h.type+' '+h.pair+'</b><br>'+Number(h.lots).toFixed(2)+' lot</div><div>'+Number(h.entry).toFixed(5)+' → '+Number(h.exit).toFixed(5)+'</div><div class="'+(h.pnl>=0?'green':'red')+'">'+(h.pnl>=0?'+':'')+'$'+Number(h.pnl).toFixed(2)+'</div><div>'+new Date(h.closedAt).toLocaleDateString()+'</div></div>').join('')}
 
   function copyForexWallet(){
   const address=document.getElementById('forexWalletAddress').textContent.trim();
 
   navigator.clipboard.writeText(address).then(()=>{
-    showToast('Forex wallet address copied.');
+    showToast('Adres portfela Forex został skopiowany.');
   }).catch(()=>{
-    showToast('Unable to copy address.');
+    showToast('Nie można skopiować adresu.');
   });
   }
 window.addEventListener('resize',drawChart);document.getElementById('orderPair').addEventListener('change',e=>selectPair(e.target.value));setInterval(updatePrices,1000);boot();
